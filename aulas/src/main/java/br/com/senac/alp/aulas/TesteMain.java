@@ -8,6 +8,17 @@ import org.junit.Test;
 public class TesteMain 
 {
 
+	private String resultado;
+	private PrimeiraAula obj;
+	
+	public String getResultado() {
+		return resultado;
+	}
+
+	public void setResultado(String resultado) {
+		this.resultado = resultado;
+	}
+
 	public TesteMain()
 	{
 		
@@ -15,48 +26,54 @@ public class TesteMain
 	
 	public void testeNull()
 	{
-		PrimeiraAula obj = null;
-		
+		obj = PrimeiraAula.getInstancia();
 		double[] valores = null;
 		double resultado = 0.0;
 		double esperado = 0.0;
 		
-		obj = PrimeiraAula.getInstancia();
 		resultado = obj.somaTotal(null);
 		esperado = Double.NaN;
 		
 		if (Double.compare(resultado, esperado)==0)
 		{
-			System.out.println("Teste com null: OK");
+			this.resultado = "Teste com null: OK";
+			//System.out.println("Teste com null: OK");
 		}
 		else
 		{
-			System.out.println("Teste com null: nOK");
+			this.resultado = "Teste com null: nOK";
+			//System.out.println("Teste com null: nOK");
 		}
 	}
 	
 	public void testeVazio() 
-	{
-		/*
+	{		
+		obj = PrimeiraAula.getInstancia();
 		double[] valores = null;		
-		double esperado = 0.0;
-		double resultado = 0.0;
-		int comparacao = 0;
+		double esperado = 0.0;		
+		double resultado = 0.0;		
 		
+		//double resultado = 4;
 		valores = new double[0];
-		resultado = this.obj.somaTotal(valores);
-		comparacao = Double.compare(resultado, esperado);
-		Assert.assertEquals(
-				"Quando o argumento for vazio deve retornar " + String.valueOf(esperado) 
-				+ ", valor retornando: " + String.valueOf(resultado),
-				comparacao, 0);
-		*/
+		
+		resultado = obj.somaTotal(valores);
+		if (Double.compare(resultado, esperado)==0)
+		{
+			this.resultado = "Teste Vazio: OK";
+			//System.out.println("Vazio: OK");
+		}
+		else
+		{
+			this.resultado = "Teste Vazio: nOK";
+			//System.out.println("Não esta fazio: nOK");
+		}		
 	}
 
 
 	public void testeArrayUnit() 
 	{
-		/*
+		obj = PrimeiraAula.getInstancia();
+
 		double[] valores = null;		
 		double esperado = 0.0;
 		double resultado = 0.0;
@@ -65,23 +82,27 @@ public class TesteMain
 		valores = new double[1];
 		valores[0] = Math.random();
 		esperado = valores[0];
-		resultado = this.obj.somaTotal(valores);
-		comparacao = Double.compare(resultado, esperado);
-		Assert.assertEquals(
-				"Esperado valor: " + String.valueOf(esperado) 
-				+ ", mas retornado valor: " + String.valueOf(resultado),
-				comparacao, 0);
-		*/
+		resultado = obj.somaTotal(valores);
+		//comparacao = Double.compare(resultado, esperado);		
 		
+		if (Double.compare(resultado, esperado)==0)
+		{
+			this.resultado = "Array Unit: OK";
+			//System.out.println("Resulta: OK");
+		}
+		else
+		{
+			this.resultado = "Array Unit: nOK";
+			//System.out.println("Result: nOK");
+		}		
 	}
 	
 	public void testeArgumentoArray() 
 	{
-		/*
+		obj = PrimeiraAula.getInstancia();
 		double[] valores = null;		
 		double esperado = 0.0;
 		double resultado = 0.0;
-		int comparacao = 0;
 		
 		valores = new double[10];
 		for (int i = 0; i < valores.length; i++) {
@@ -89,14 +110,19 @@ public class TesteMain
 			valores[i] = val;
 			esperado += val;
 		}
-		resultado = this.obj.somaTotal(valores);
-		comparacao = Double.compare(resultado, esperado);
-		Assert.assertEquals(
-				"Esperado valor: " + String.valueOf(esperado) 
-				+ ", mas retornado valor: " + String.valueOf(resultado)
-				+ " array completo: " + Arrays.toString(valores),
-				comparacao, 0);
-				*/
+		resultado = obj.somaTotal(valores);
+		
+		if (Double.compare(resultado, esperado)==0)
+		{
+			this.resultado = "Argumento Array: OK";
+			//System.out.println("Resulta: OK");
+		}
+		else
+		{
+			this.resultado = "Argumento Array: nOK";
+			//System.out.println("Result: nOK");
+		}		
+		
 		
 	}
 }

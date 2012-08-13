@@ -2,29 +2,32 @@ package br.com.senac.alp.aulas;
 
 import java.util.Scanner;
 
-public class PrimeiraAula {
-
+public class PrimeiraAula 
+{
 	private static PrimeiraAula instancia = new PrimeiraAula();
 
-	public static void main(String[] args) {
-		TesteMain a = new TesteMain();
-		a.testeNull();
-		a.testeArrayUnit();
+	public static void main(String[] args) 
+	{
+		imprimeTela();
 	}
 
-	private PrimeiraAula() {
+	private PrimeiraAula() 
+	{
 
 		super();
 	}
 
-	public double somaTotal(double[] valores) {
+	public double somaTotal(double[] valores) 
+	{
 
 		double resultado = 0.0;
 
-		if (valores == null) {
+		if (valores == null) 
+		{
 			resultado = Double.NaN;
 		} else {
-			for (int i = 0; i < valores.length; i++) {
+			for (int i = 0; i < valores.length; i++) 
+			{
 				resultado += valores[i];
 			}
 		}
@@ -32,39 +35,47 @@ public class PrimeiraAula {
 		return resultado;
 	}
 
-	public static PrimeiraAula getInstancia() {
+	public static PrimeiraAula getInstancia() 
+	{
 
 		return PrimeiraAula.instancia;
 	}
 
-	public void imprimeTela() {
-		try {
+	public static void imprimeTela() 
+	{		
+		try 
+		{
 			Scanner in = new Scanner(System.in);
 			int valor = 0;
 			boolean loop = true;
 			while (loop) {
 				ImprimeLinhaBrancas();
 				valor = in.nextInt();
-				if (!(valor < 0 || valor > 4)) {
+				if (!(valor < 1 || valor > 5)) {
 					loop = false;
 				}
 			}
 			
+			TesteMain obj = new TesteMain();
+			
 			switch (valor) {
 			case 1:
-				
+				obj.testeNull();
+				System.out.println(obj.getResultado());
 				break;
 			case 2:
-				
+				obj.testeVazio();
+				System.out.println(obj.getResultado());
 				break;
 			case 3:
-				
+				obj.testeArrayUnit();
+				System.out.println(obj.getResultado());
 				break;
 			case 4:
-				
+				obj.testeArgumentoArray();
+				System.out.println(obj.getResultado());
 				break;
-			case 5:
-				
+			case 5:				
 				Sair();
 				break;
 			}
@@ -81,17 +92,18 @@ public class PrimeiraAula {
 	}
 
 	public static void ImprimeLinhaBrancas() {
-		for (int o = 1; o < 15; o++) {
+		for (int o = 1; o < 15; o++) 
+		{
 			System.out.println("\n");
 		}
 
 		System.out.println("Escolha as opções abaixo (Apenas NUMEROS ):");
-		System.out.println("( 0 )- Sair");
-		System.out.println("( 1 )- Calcular um numero par ou impar");
-		System.out.println("( 2 )- Calcular o maior numero de 3 numeros");
-		System.out.println("( 3 )- Calcular o menor numero de 3 numeros");
-		System.out
-				.println("( 4 )- Calcular a soma dos numero positivos pares, inferiores ou igual ao informado");
+		System.out.println("( 1 )- Argumento Nulo");
+		System.out.println("( 2 )- Argumento Vazio");
+		System.out.println("( 3 )- Array Unitario");
+		System.out.println("( 4 )- Argumento Array");
+		System.out.println("( 5 )- Sair");
+		
 		System.out.println("Digite a opção: ");
 	}
 }
